@@ -1,0 +1,30 @@
+<aura:component controller="callExchange" implements="flexipage:availableForRecordHome,force:hasRecordId"
+    access="global">
+    <!--fetch datatable columns and data-->
+    <aura:attribute name="data" type="Object" />
+    <aura:attribute name="columns" type="List" />
+    <aura:attribute name="draftValues" type="Object" default="[]" />
+    <!--aura component refresh view -->
+    <aura:handler event="force:refreshView" action="{!c.doInit}" />
+    <!--aura component fire method-->  
+    <aura:handler name="init" value="{! this }" action="{! c.doInit }" />    
+    <lightning:card class="slds-p-around_small" title="Exchange Datatable">
+        <hr/>
+        <div style="text-align:right;" class="slds-p-around_medium">
+            <!--lcw record creation component-->  
+            <lightning:button label="New Trade" onclick="{!c.handleClick}" variant="brand"/>
+        </div>
+        <div class="slds-p-around_medium" style="border: 1px solid rgb(138, 136, 136)">
+            <!--aura component table view and data-->
+            <lightning:datatable  class="slds-p-around_small"
+                columns="{! v.columns }"
+                data="{! v.data }" 
+                keyField="Id" 
+                draftValues="{! v.draftValues }" 
+                hideCheckboxColumn="true"                              
+                />
+        </div>
+    </lightning:card>
+    <!-- child lwc component call-->
+    <c:exchangeTradesLWC aura:id="exchangeTradesLWC" onneedToRefreshTable="{!c.createExchange}"></c:exchangeTradesLWC>
+</aura:component>

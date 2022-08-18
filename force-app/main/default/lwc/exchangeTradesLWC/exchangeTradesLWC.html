@@ -1,0 +1,81 @@
+<template>
+        <div if:true={DisplayText}
+                class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+                <lightning-card>
+                        <lightning-layout vertical-align="center">
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                                <lightning-combobox name="sellCurrency" label="Select Sell Currency"
+                                                        value={sellCurrency} placeholder="Select Sell Currency"
+                                                        options={options} onchange={handleSellChange} required
+                                                        class="validate">
+                                                </lightning-combobox>
+                                        </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                                <h1>Rate</h1>
+                                                <br />
+                                                ➤
+                                                &nbsp;
+                                                <input class="slds-p-around_x-small slds-text-align_center"
+                                                        type="number" value={rate} disabled>
+                                                &nbsp;
+                                                ➤
+                                        </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                                <lightning-combobox name="buyCurrency" label="Select Buy Currency"
+                                                        value={buyCurrency} placeholder="Select Buy Currency"
+                                                        options={options} onchange={handleBuyChange} required
+                                                        class="validate">
+                                                </lightning-combobox>
+                                        </div>
+                                </lightning-layout-item>
+                        </lightning-layout>
+
+                        <br />
+
+                        <lightning-layout>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                                <lightning-input name="amount" label="Enter Amount" value={amount}
+                                                        onchange={handleAmountChange} max-length="11" required
+                                                        class="validate"></lightning-input>
+                                        </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center"></div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                                <lightning-input name="buyAmount" label="Buy Amount"
+                                                        value={buyAmount} disabled></lightning-input>
+                                        </div>
+                                </lightning-layout-item>
+                        </lightning-layout>
+
+                        <br />
+
+                        <lightning-layout>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                                <lightning-button variant="brand" label="Create" title="Create"
+                                                        onclick={createExchange}></lightning-button>
+                                        </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                        </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item size="4" padding="around-small">
+                                        <div class="slds-p-around_medium slds-text-align_center">
+                                                <lightning-button variant="brand" label="Cancel" title="Cancel"
+                                                        onclick={cancel}></lightning-button>
+                                        </div>
+                                </lightning-layout-item>
+                        </lightning-layout>
+                </lightning-card>
+        </div>
+</template>
